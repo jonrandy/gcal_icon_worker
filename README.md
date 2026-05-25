@@ -9,3 +9,4 @@ A simple Cloudflare worker to get a Google Calendar icon.
 * Supported sizes via `?size=` query param: 16, 24, 32, 48, 64, 96 (default: 96)
 Example: `/icon?tz=Asia/Bangkok&size=48`
 
+Currently deployed at: https://gcal_icon_worker.jonrandy-cloudflare.workers.dev
