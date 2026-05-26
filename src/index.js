@@ -9,6 +9,8 @@
 // Supported sizes via ?size= query param: 16, 24, 32, 48, 64, 96 (default: 96)
 // Example: /icon?tz=Asia/Bangkok&size=48
 
+const DEFAULT_TZ = 'UTC' // 'Asia/Bangkok'
+
 export default {
   async fetch(request) {
     const url = new URL(request.url)
@@ -17,7 +19,7 @@ export default {
     // --- Determine the date ---
     let dateStr = params.get("date") // override: YYYY-MM-DD
     if (!dateStr) {
-      const tz = params.get("tz") || "UTC"
+      const tz = params.get("tz") || request.cf?.timezone || DEFAULT_TZ
       try {
         dateStr = new Date().toLocaleDateString("en-CA", { timeZone: tz })
         // en-CA gives YYYY-MM-DD format natively
